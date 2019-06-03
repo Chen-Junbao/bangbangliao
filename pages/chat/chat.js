@@ -127,7 +127,7 @@ Page({
         connect.deleteFriend(friendName);
         break;
     }
-  }
+  },
 
   navigateToChatUI: function (e) {
     wx.navigateTo({
