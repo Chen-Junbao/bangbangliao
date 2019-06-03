@@ -12,9 +12,7 @@
     <view id="{{item['id']}}" style="margin-left: 20rpx; margin-top: 4rpx; background:#f9f9f9;"
       bindtap='navigateToChatUI'>
       <van-row>
-        <van-col span="4">
-          <image src="/image/friend.png" style="width: 90rpx; height:90rpx;"></image>
-        </van-col>
+        <van-col span="4"><image src="{{item['pic']}}" style="width: 90rpx; height:90rpx;"></image></van-col>
         <van-col span="16">
           <view><text style="font-size: 28rpx; font-family: serif;">{{item['id']}}</text></view>
           <view><text style="font-size: 24rpx; font-family: serif;">{{item['chatContent']}}</text></view>

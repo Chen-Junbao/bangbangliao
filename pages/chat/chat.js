@@ -4,18 +4,11 @@ var db = wx.cloud.database();
 var chatTable = db.collection('chatDataTable');
 Page({
   data: {
-    ss: [
-      {
-        'photo': '/image/friend.png',
-        'name': 'char',
-        'description': '嘿嘿嘿',
-        'time': '昨天',
-        'tag': 0,
-        'id': 1   //此ID为好友的openID
-      }
-    ],
+    ss: [ ],
     chatInfoList: [],
     timerTask: null,//循环监听
+    contHeadIcon: '/image/friend.png',
+    headIcon: [],
   },
 
   // onHide: function () {
@@ -78,9 +71,40 @@ Page({
           }
         }
       }
+      for(var t in cc){  
+        ////
+        db.collection('userTable').where({
+          name: cc[t]["id"]
+        }
+        ).get({
+          success: res => {
+            //   queryResult = JSON.stringify(res.data, null, 2)
+            that.setData({
+              headIcon: res.data[0].avatar
+            })
+            console.log("head", res.data)
+            //console.log('[数据库] [查询记录] 成功：', res.data)
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '当前网络信号差'
+            })
+            console.error('网l：', err)
+          }
+        })
+        console.log("hhh", that.data.headIcon)
+     //   that.setData({
+     //     contHeadIcon: that.data.headIcon,
+     //   })
+        cc[t]["pic"] = that.data.headIcon
+      //////
+      }
       that.setData({
         chatInfoList: cc,
       })
+      
+
       //循环执行代码 
     }, 2000)
   },

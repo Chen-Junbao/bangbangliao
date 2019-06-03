@@ -54,6 +54,7 @@ Page({
     contHeadIcon: '/image/friend.png',
     cusHeadIcon: '/image/friend.png',
     ss: [],
+    headIcon:[],
     timerTask: null,//循环监听
     msgList: [],
   },
@@ -99,6 +100,31 @@ Page({
           })
           console.error('网l：', err)
         }
+      }),
+//
+      db.collection('userTable').where({
+        name: getApp().globalData.otherid
+        }
+        ).get({
+        success: res => {
+          //   queryResult = JSON.stringify(res.data, null, 2)
+          that.setData({
+            headIcon: res.data[0].avatar
+          })
+          console.log("head",res.data)
+          //console.log('[数据库] [查询记录] 成功：', res.data)
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '当前网络信号差'
+          })
+          console.error('网l：', err)
+        }
+      })
+      console.log("hhh", that.data.headIcon)
+      that.setData({
+        contHeadIcon: that.data.headIcon,
       })
       //console.log("ss11:", that.data.ss);
       var a = [];
