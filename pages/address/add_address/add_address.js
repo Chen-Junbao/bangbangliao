@@ -24,6 +24,7 @@ Page({
   formSubmit(e) {
     var temp = e.detail.value;
     if (temp.contacts != '' && temp.tel != '' && temp.address != '') {
+      
       this.setData({
         submit: {
           contacts: e.detail.value.contacts,
@@ -32,7 +33,8 @@ Page({
           address: e.detail.value.address,
           location: this.data.submit['location'],
         }
-      })
+      });
+      console.log(this.data.submit);
       // //console.log('提交的表单信息为：', this.data.submit)
       wx.showToast({
         title: '添加成功',

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-row": "/lib/vant-weapp/dist/row/index",
+    "van-col": "/lib/vant-weapp/dist/col/index",
+    "van-button": "/lib/vant-weapp/dist/button/index"
+  },
+  "navigationBarTitleText": "快递订单",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

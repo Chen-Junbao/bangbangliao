@@ -12,8 +12,9 @@
     <van-row>
       <van-col span="5" wx:if="{{item['location'] == '教室'}}"><van-button type="warning" size="mini">{{item['location']}}</van-button></van-col>
       <van-col span="5" wx:elif="{{item['location'] == '宿舍'}}"><van-button type="primary" size="mini">{{item['location']}}</van-button></van-col>
-      <van-col span="16"><text style="font-size: 29rpx; font-family:Serif">{{item['address']}}</text></van-col>
+      <van-col span="14"><text style="font-size: 29rpx; font-family:Serif">{{item['address']}}</text></van-col>
       <van-col ><van-icon id="{{item['id']}}" name="edit" size='50rpx' bindtap='edit_address' /></van-col> 
+      <van-col offset='1'><van-icon id="{{item['id']}}" name="cross" size='40rpx' bindtap='delete_address' /></van-col> 
     </van-row>
   </view>
 </block>

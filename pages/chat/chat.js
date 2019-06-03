@@ -91,6 +91,20 @@ Page({
       url: '../order/addFriend/addFriend',
     })
   },
+
+  deleteFriend: function (event) {
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        // friendName 为要删除的好友名称
+        connect.deleteFriend(friendName);
+        break;
+    }
+  }
+
   navigateToChatUI: function (e) {
     wx.navigateTo({
       url: './chatui/chatui?id=' + e.currentTarget.id

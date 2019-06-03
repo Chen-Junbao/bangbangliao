@@ -53,14 +53,12 @@ Page({
   },
   navigateToDelivery: function (e) {
     //此处区分对应的跳转页面
-    connect.changeMe(false);
     wx.navigateTo({
       url: './delivery/delivery'
     });
   },
   navigateToExpress: function (e) {
     //此处区分对应的跳转页面
-    connect.changeMe(false);
     wx.navigateTo({
       url: './express/express'
     })

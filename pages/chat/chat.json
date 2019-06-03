@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-row": "/lib/vant-weapp/dist/row/index",
     "van-col": "/lib/vant-weapp/dist/col/index",
-    "van-tag": "/lib/vant-weapp/dist/tag/index"
+    "van-tag": "/lib/vant-weapp/dist/tag/index",
+    "van-swipe-cell": "/lib/vant-weapp/dist/swipe-cell/index"
   }
 }

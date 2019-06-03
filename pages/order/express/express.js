@@ -7,20 +7,13 @@ Page({
 
   onLoad:function(e){
     this.setData({ deliveryInfo: [] });
-    if (connect.getMe()) {
-      connect.changeMyOrder(this, '快递');
-    } else {
-      connect.changePage(this, '快递');
-    }
+    connect.changePage(this, '快递');
   },
 
   onShow: function (e) {
     this.setData({ deliveryInfo: [] });
-    if (connect.getMe()) {
-      connect.changeMyOrder(this, '快递');
-    } else {
-      connect.changePage(this, '快递');
-    }
+    connect.changePage(this, '快递');
+    
     ////console.log(this.data.deliveryInfo);
   },
 
@@ -51,8 +44,10 @@ Page({
   },
   //下拉刷新
   onPullDownRefresh: function () {
+    var that = this;
     setTimeout(function () {
       wx.hideNavigationBarLoading() //完成停止加载
+      that.onShow()
       wx.stopPullDownRefresh() //停止下拉刷新
     }, 1500);
     ////console.log("下拉刷新")

@@ -8,9 +8,9 @@ Page({
     'addressInfoList': []
   },
 
-  onShow:function(e){
+  onShow: function (e) {
     this.setData({
-      'addressInfoList':[]
+      'addressInfoList': []
     });
     connect.changeAddressPage(this);
   },
@@ -29,4 +29,26 @@ Page({
       url: '../address/add_address/add_address',
     })
   },
+
+  //删除
+  delete_address: function (e) {
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确认删除？',
+      success: function (res) {
+        if (res.confirm) {
+          ////console.log('用户点击确定');
+          //数据库操作
+          connect.deleteAddress(e.currentTarget.id);
+          setTimeout(
+            function () {
+              that.onShow();
+            }, 1000)
+        } else if (res.cancel) {
+          ////console.log('用户点击取消');
+        }
+      }
+    })
+  }
 })

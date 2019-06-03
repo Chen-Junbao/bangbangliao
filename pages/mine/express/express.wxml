@@ -1,0 +1,42 @@
+<view style="margin-bottom: 60rpx;">
+    <block wx:for="{{deliveryInfo}}">
+        <view style="margin: 20rpx 10rpx 0 10rpx; padding-bottom: 20rpx; background: #f9f9f9;">
+            <van-row>
+                <van-col span="2">
+                    <image src="{{item['profilePhoto']}}" style="width: 90rpx; height: 90rpx;"></image>
+                </van-col>
+                <van-col offset="2" span="2">
+                    <view style="font-family: serif; font-size: 24rpx; font-weight: 300; margin-top: 30rpx;">{{item['name']}}</view>
+                </van-col>
+                <van-col offset="2" span="3">
+                    <view style="font-family: serif; font-size: 24rpx; font-weight: 300; margin-top: 30rpx;">{{item['time']}}</view>
+                </van-col>
+                <van-col offset="3" span="4">
+                    <view style="font-family: serif; font-size: 24rpx; font-weight: 300; margin-top: 30rpx;">
+                        <text>标签：</text>
+                        <text>{{item['tag']}}</text>
+                    </view>
+                </van-col>
+                <van-col offset="1" span="5">
+                    <view style="font-family: serif; font-size: 24rpx; font-weight: 300; margin-top: 30rpx;">
+                        <text>状态：</text>
+                        <text>{{item['state']}}</text>
+                    </view>
+                </van-col>
+            </van-row>
+
+            <van-row>
+                <view style="margin: 0 36rpx 40rpx 16rpx;">
+                    <text
+                        style="font-family: serif; font-size: 24rpx; line-height: 8rpx;">{{item['description']}}</text>
+                </view>
+            </van-row>
+
+            <view style="text-align: center;">
+              <button id="{{item['id']}}" plain type="warn" size="mini" style="width: 20%; font-weight: 500;" bindtap="delete_order">删除</button>
+            </view>
+        </view>
+    </block>
+</view>
+
+<button style="position: fixed; bottom: 0; padding: 0; width: 100%; height: 60rpx; line-height: 60rpx; font-size: 30rpx; background: #888888; color: white;" bindtap='make_order'>去下单</button>

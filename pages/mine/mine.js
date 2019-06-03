@@ -75,18 +75,14 @@ Page({
   },
 
   navigateToMyDelivery: function (e) {
-    //此处区分对应的跳转页面
-    connect.changeMe(true);
     wx.navigateTo({
-      url: '../order/delivery/delivery'
+      url: '../mine/delivery/delivery'
     })
   },
 
   navigateToMyExpress: function (e) {
-    //此处区分对应的跳转页面
-    connect.changeMe(true);
     wx.navigateTo({
-      url: '../order/express/express'
+      url: '../mine/express/express'
     })
   },
 })

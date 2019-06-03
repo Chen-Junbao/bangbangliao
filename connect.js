@@ -12,7 +12,6 @@ var info = {
   avatarUrl:null,
   gender:null
 };
-var ifMine = false;
 
 
 //用于初始化云函数并返回Openid
@@ -467,14 +466,6 @@ function changeMyOrder(that, tag) {
     });
 }
 
-function changeMe(ifm){
-  ifMine = ifm;
-}
-
-function getMe(){
-  return ifMine;
-}
-
 //聊天记录插入数据库
 function chatTable1(e) {
     const db = wx.cloud.database()
@@ -522,6 +513,33 @@ function findchatTable1(e) {
         })
 }
 
+function deleteOrder(orderId){
+  wx.cloud.callFunction({
+    name:'deleteOrder',
+    data:{
+      orderId:orderId
+    },
+    success:function(e){
+      console.log(e);
+    }
+  })
+}
+
+//friendName是要删除好友的name,其中Openid在函数中内部获取了
+function deleteFriend(friendName){
+  console.log('happen');
+  wx.cloud.callFunction({
+    name:'deleteFriend',
+    data:{
+      name:friendName,
+      myOpenid:getOpenid()
+    },
+    success:function(e){
+      console.log(e);
+    }  
+  });
+}
+
 function changeRecommendPage(that) {
   return _get().then
     (res => {
@@ -564,7 +582,6 @@ function changeRecommendPage(that) {
     });
 }
 
-
 function searchRecommendPage(that, info) {
     return getAllOrderData().then
         (res => {
@@ -606,6 +623,20 @@ function searchRecommendPage(that, info) {
         });
 }
 
+function deleteAddress(id){
+  wx.cloud.callFunction({
+    name: 'deleteAddress',
+    data: {
+      addressId: id
+    },
+    success: function (e) {
+      console.log(e);
+    }
+  })
+}
+
+
+
 module.exports = {
   initAndGetOpenId: initAndGetOpenId,
   changeCount:changeCount,
@@ -628,8 +659,9 @@ module.exports = {
   findchatTable1: findchatTable1,
   changeRecommendPage: changeRecommendPage,
   searchRecommendPage: searchRecommendPage,
-  changeMe:changeMe,
-  getMe:getMe,
+  deleteFriend,deleteFriend,
+  deleteOrder:deleteOrder,
+  deleteAddress:deleteAddress
 }
 
 
