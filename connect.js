@@ -532,7 +532,7 @@ function deleteFriend(friendName){
     name:'deleteFriend',
     data:{
       name:friendName,
-      myOpenid:getOpenid()
+      myname: getApp().globalData.userInfo["nickName"],
     },
     success:function(e){
       console.log(e);

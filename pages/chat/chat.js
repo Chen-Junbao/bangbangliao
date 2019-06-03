@@ -9,6 +9,8 @@ Page({
     timerTask: null,//循环监听
     contHeadIcon: '/image/friend.png',
     headIcon: [],
+    tt:0,
+    mmp:[],
   },
 
   // onHide: function () {
@@ -40,7 +42,7 @@ Page({
           fail: err => {
             wx.showToast({
               icon: 'none',
-              title: '查询记录失败'
+              title: '当前网络信号差'
             })
             console.error('[数据库] [查询记录] 失败：', err)
           }
@@ -80,9 +82,10 @@ Page({
           success: res => {
             //   queryResult = JSON.stringify(res.data, null, 2)
             that.setData({
-              headIcon: res.data[0].avatar
+              headIcon: res.data[0].avatar,
+              tt: res.data[0].name
             })
-            console.log("head", res.data)
+            that.data.mmp.push({ "headIcon": that.data.headIcon, "tt": that.data.tt});
             //console.log('[数据库] [查询记录] 成功：', res.data)
           },
           fail: err => {
@@ -93,12 +96,12 @@ Page({
             console.error('网l：', err)
           }
         })
-        console.log("hhh", that.data.headIcon)
-     //   that.setData({
-     //     contHeadIcon: that.data.headIcon,
-     //   })
-        cc[t]["pic"] = that.data.headIcon
-      //////
+     for(var x in that.data.mmp){
+       if (that.data.mmp[x]["tt"] == cc[t]["id"]){
+         cc[t]["pic"] = that.data.mmp[x]["headIcon"];
+       }     
+     }
+       
       }
       that.setData({
         chatInfoList: cc,
@@ -117,15 +120,16 @@ Page({
   },
 
   deleteFriend: function (event) {
+    
     const { position, instance } = event.detail;
     switch (position) {
-      case 'cell':
-        instance.close();
-        break;
-      case 'right':
-        // friendName 为要删除的好友名称
-        connect.deleteFriend(friendName);
-        break;
+     case 'cell':
+       instance.close();
+       break;
+     case 'right':
+   // friendName 为要删除的好友名称
+       connect.deleteFriend(event.currentTarget.id);
+       break;
     }
   },
 

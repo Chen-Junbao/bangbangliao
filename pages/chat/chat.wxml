@@ -8,7 +8,7 @@
 </view>
 
 <block wx:for="{{chatInfoList}}">
-  <van-swipe-cell right-width="{{40}}" async-close bind:close="deleteFriend">
+  <van-swipe-cell id="{{item['id']}}" right-width="{{40}}" async-close bind:close="deleteFriend">
     <view id="{{item['id']}}" style="margin-left: 20rpx; margin-top: 4rpx; background:#f9f9f9;"
       bindtap='navigateToChatUI'>
       <van-row>
