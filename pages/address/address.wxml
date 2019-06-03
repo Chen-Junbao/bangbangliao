@@ -18,7 +18,7 @@
   </view>
 </block>
 
-<view style="position:fixed;bottom:0;width:100%;background:#f8f8f8;" bindtap='add_address'>
+<view style="margin-bottom: 40rpx; position:fixed;bottom:0;width:100%;background:#f8f8f8; height: 80rpx; line-height: 80rpx;" bindtap='add_address'>
   <van-row>
     <van-col span='1' offset='10'><van-icon name="add-o" size='30rpx' /></van-col> 
     <van-col><text style="font-size: 33rpx; font-family:Serif;font-weight:bold">新增地址</text></van-col>

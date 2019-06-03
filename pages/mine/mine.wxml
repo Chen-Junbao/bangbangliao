@@ -47,7 +47,3 @@
   <van-cell bindtap='rule' title="规则中心" icon="column" is-link></van-cell>
   <van-cell bindtap='recommend' title="推荐有奖" icon="point-gift" is-link></van-cell>
 </cell-group>
-
-<view style="background: #f9f9f9; text-align: center; height: 50rpx; margin-top: 40rpx; padding: 26rpx;">
-  <text style="font-family: serif; font-size: 36rpx; font-weight: bold; color: red;">退出登录</text>
-</view>
